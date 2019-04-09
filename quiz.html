@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+<p>Sounds like you dont like jazz, maybe you should check this out</p>
+<form  id="form1">
+<select id="thedropdown">
+  <option value="0">Choose:</option>
+  <option value="Hip hop">Hip Hop</option>
+  <option value="Rock">Rock</option>
+  <option value="Pop">Pop</option>
+</select>
+
+</form>
+
+<p>Your choice is: <span id="myzip"></span></p>
+<p>Some artist for this genre are: <span id="mynoise"></span></p>
+
+<script>
+//json for a sample of data
+var data = [
+{genre: "Hip hop", artist: "2 chainz"},
+{genre: "Rock", artist: "gary clark jr"},
+{genre: "Pop", artist: "lady gaga"}
+];
+
+//function that executes when you submit the form
+document.getElementById("form1").onchange=function() {
+	  
+// assigns value in dropdown to a variable
+choice = document.getElementById("thedropdown").value;
+if (choice == 0) {
+
+	document.getElementById("myzip").innerHTML= "Sorry! You haven't made a selection yet!"; }
+
+else {
+
+//changes the DOM element for zipcode to form value
+document.getElementById("myzip").innerHTML= choice;
+
+//for loop reads the json and returns the noise value if value from form equals value in json
+for (i=0; i<data.length; i++) {
+  if (choice==data[i].genre){
+  document.getElementById("mynoise").innerHTML= data[i].artist;
+  }//end if
+  
+}//end for
+}//end else
+
+
+
+}//end function
+
+</script>
+
+</body>
+
+</html>
